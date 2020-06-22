@@ -1,0 +1,47 @@
+name: WebPlayer
+
+include:
+  - project.base.yml
+
+targets:
+  WebPlayer:
+    platform: iOS
+    deploymentTarget:
+      iOS: 11.0
+    type: application
+    sources:
+      - path: Source
+    requiresObjCLinking: true
+    settings:
+      base:
+        PRODUCT_BUNDLE_IDENTIFIER: com.denver.streamlayer.swift
+        ENABLE_BITCODE: NO
+        ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES: $(inherited)
+        CODE_SIGN_IDENTITY: iPhone Developer
+        CODE_SIGN_STYLE: Automatic
+        DEVELOPMENT_TEAM: DQ6GN5F28E
+        CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED: YES
+    dependencies:
+      - carthage: StreamLayer
+      - carthage: StreamLayerVendor
+      - carthage: WebRTC
+      - carthage: Realm
+      - carthage: RealmSwift
+      - carthage: SLProtofiles
+      - carthage: SwiftGRPC
+      - carthage: CgRPC
+      - carthage: BoringSSL
+      - carthage: SwiftProtobuf
+      - carthage: SnapKit
+      - carthage: RxSwift
+      - carthage: RxRelay
+      - carthage: RxCocoa
+    postCompileScripts:
+      - script: |
+                    if which swiftlint >/dev/null; then
+                      swiftlint
+                    else
+                      echo "error: SwiftLint does not exist, download it from https://github.com/realm/SwiftLint"
+                      exit 1
+                    fi
+        name: SwiftLint
