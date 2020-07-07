@@ -15,7 +15,8 @@ private let screenRatio: CGFloat = 9/16
 private let overlayViewWidth: CGFloat = 300
 
 class ViewController: UIViewController {
-  private let videoPlayer = SLRVideoPlayer()
+  //private let videoPlayer = SLRVideoPlayer()
+  private let videoPlayer = VideoPlayerController()
   private let overlayView = UIView()
   private let disposeBag = StreamLayerVendor.DisposeBag()
   private let rxDisposeBag = RxSwift.DisposeBag()

@@ -93,9 +93,10 @@ extension StreamViewController: UITableViewDataSource {
 
   func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
     if  let stream = viewModel.getStream(by: indexPath),
-        let cell = tableView.dequeueReusableCell(
-            withIdentifier: streamCellReuseIdentifier,
-            for: indexPath) as? StreamCell {
+      let cell = tableView.dequeueReusableCell(
+        withIdentifier: streamCellReuseIdentifier,
+        for: indexPath
+        ) as? StreamCell {
       let cellViewModel = StreamCellViewModel(stream: stream)
       cell.viewModel = cellViewModel
       return cell
@@ -106,7 +107,6 @@ extension StreamViewController: UITableViewDataSource {
   public func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
     streamCellHeight
   }
-
 }
 
 extension StreamViewController: UITableViewDelegate {
